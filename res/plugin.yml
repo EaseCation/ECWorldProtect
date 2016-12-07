@@ -1,0 +1,18 @@
+name: ECWorldProtect
+main: net.easecation.ecworldprotect.ECWorldProtect
+version: "1.0.0"
+api: ["1.0.0"]
+
+load: STARTUP
+author: EaseCation Network
+description: The world protect plugin for EaseCation Network
+website: https://github.com/EaseCation/ECWorldProtect
+commands:
+  ecwp:
+    description: ECWorldProtect main command
+    usage: "/ecwp <world|whitelist> <add|remove|list> (player) (perm level)"
+    permission: ecworldprotect.command.ecwp
+permissions:
+  ecworldprotect:
+    description: "Allows the user to run the ecwp command"
+    default: "op
