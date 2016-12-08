@@ -15,4 +15,4 @@ commands:
 permissions:
   ecworldprotect:
     description: "Allows the user to run the ecwp command"
-    default: "op
+    default: "op"
