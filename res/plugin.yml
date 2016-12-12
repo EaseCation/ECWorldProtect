@@ -10,7 +10,7 @@ website: https://github.com/EaseCation/ECWorldProtect
 commands:
   ecwp:
     description: ECWorldProtect main command
-    usage: "/ecwp <world|whitelist> <add|remove|list> (player) (perm level)"
+    usage: "/ecwp <add|remove|list> (world) (player) (perm level)"
     permission: ecworldprotect.command.ecwp
 permissions:
   ecworldprotect:

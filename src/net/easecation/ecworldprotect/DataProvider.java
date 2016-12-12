@@ -1,5 +1,6 @@
 package net.easecation.ecworldprotect;
 
+import cn.nukkit.Player;
 import cn.nukkit.level.Level;
 import cn.nukkit.utils.Config;
 
@@ -38,10 +39,31 @@ public class DataProvider {
         }
     }
 
+    public boolean hasPermission(Level level, Player player){
+        return true;
+    }
+
     public boolean addLevel(Level level, int defaultPerm){
         if(this.config.containsValue(level.getFolderName())){
-
+            if(this.config.get(level.getFolderName()) instanceof LinkedHashMap){
+                LinkedHashMap<String, Object> worldConfig = (LinkedHashMap) this.conf.get(level.getFolderName());
+                if(worldConfig.containsValue("default-perm")){
+                    worldConfig.put("default-perm", defaultPerm);
+                }
+            }
         }
+        return true;
+    }
+
+    public boolean removeLevel(Level level){
+        return true;
+    }
+
+    public boolean addPlayer(Level level, Player player, int permission){
+        return true;
+    }
+
+    public boolean removePlayer(Level level, Player player){
         return true;
     }
 }
