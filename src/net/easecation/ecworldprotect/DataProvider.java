@@ -39,11 +39,16 @@ public class DataProvider {
         }
     }
 
-    public boolean hasPermission(Level level, Player player){
+    public void checkData(){
+
+    }
+
+    public boolean hasPermission(Level level, Player player, int permLevel){
         return true;
     }
 
     public boolean addLevel(Level level, int defaultPerm){
+        this.checkData();
         if(this.config.containsValue(level.getFolderName())){
             if(this.config.get(level.getFolderName()) instanceof LinkedHashMap){
                 LinkedHashMap<String, Object> worldConfig = (LinkedHashMap) this.conf.get(level.getFolderName());
@@ -56,14 +61,17 @@ public class DataProvider {
     }
 
     public boolean removeLevel(Level level){
+        this.checkData();
         return true;
     }
 
     public boolean addPlayer(Level level, Player player, int permission){
+        this.checkData();
         return true;
     }
 
     public boolean removePlayer(Level level, Player player){
+        this.checkData();
         return true;
     }
 }

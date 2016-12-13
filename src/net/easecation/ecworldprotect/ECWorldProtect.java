@@ -30,6 +30,10 @@ class ECWorldProtect extends PluginBase{
         this.getLogger().info(TextFormat.RED + "ECWorldProtect has been disabled.");
     }
 
+    public DataProvider getDataProvider(){
+        return this.dataProvider;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         switch (command.getName()){
