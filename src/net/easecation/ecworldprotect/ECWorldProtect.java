@@ -67,9 +67,9 @@ class ECWorldProtect extends PluginBase{
                                 Player player = this.getServer().getPlayer(args[2]);
                                 boolean result = this.dataProvider.addPlayer(level, player, this.dataProvider.getPermByName(args[2]));
                                 if(result){
-                                    sender.sendMessage(TextFormat.GREEN + "Added perm Level '" + level.getFolderName() + "' default perm " + args[2]);//TODO
+                                    sender.sendMessage(TextFormat.GREEN + "Added perm for " + player.getName() + " in level '" + level.getFolderName() + "' default perm " + args[2]);//TODO
                                 }else{
-                                    sender.sendMessage(TextFormat.RED + "Failed to add Level '" + level.getFolderName() + "'.");
+                                    sender.sendMessage(TextFormat.RED + "Failed to add perm for " + player.getName() + " in level '" + level.getFolderName() + "'.");
                                 }
                                 return true;
                             }else{
@@ -79,9 +79,43 @@ class ECWorldProtect extends PluginBase{
                         }
                         return false;
                     case "remove":
-                        break;
+                        if(args.length == 2) {
+                            if (this.getServer().getLevelByName(args[1]) != null) {
+                                Level level = this.getServer().getLevelByName(args[1]);
+                                boolean result = this.dataProvider.removeLevel(level);
+                                if (result) {
+                                    sender.sendMessage(TextFormat.GREEN + "Removed perm for level '" + level.getFolderName() + "'");
+                                } else {
+                                    sender.sendMessage(TextFormat.RED + "Failed to remove Level '" + level.getFolderName() + "'.");
+                                }
+                                return true;
+                            } else {
+                                sender.sendMessage(TextFormat.RED + "Level '" + args[1] + "' not found.");
+                                return true;
+                            }
+                        }
+                        if(args.length == 3){
+                            if(this.getServer().getLevelByName(args[1]) != null && this.getServer().getPlayer(args[2]) != null){
+                                Level level = this.getServer().getLevelByName(args[1]);
+                                Player player = this.getServer().getPlayer(args[2]);
+                                boolean result = this.dataProvider.removePlayer(level, player);
+                                if(result){
+                                    sender.sendMessage(TextFormat.GREEN + "Removed perm for " + player.getName() + " in level '" + level.getFolderName() + "'");//TODO
+                                }else{
+                                    sender.sendMessage(TextFormat.RED + "Failed to remove perm for " + player.getName() + " in level '" + level.getFolderName() + "'.");
+                                }
+                                return true;
+                            }else{
+                                sender.sendMessage(TextFormat.RED + "Level '" + args[1] + "' not found.");
+                                return true;
+                            }
+                        }
+                        return false;
                     case "list":
-                        break;
+                        if(args.length == 1){
+
+                        }
+                        return false;
                     default:
                         return false;
                 }
